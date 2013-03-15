@@ -7,7 +7,7 @@ See the [API description](http://bitbattle.me/) for details on the API.
 
 BaseBot
 -------
-This is a skeleton bot that does noting but connect to the API and display all json event data it receives. Use this bot
+This is a skeleton bot that does nothing but connect to the API and display all json event data it receives. Use this bot
 to get an understanding of the API events and json objects: Startup the bot and watch it's output while manually placing
 bets on bitbattle.me.
 You only need to provide the uuid of the player you want to use to the bot.
@@ -28,5 +28,8 @@ will be doubled and bet again. This will repeat until either the maxium wager is
 the current round is considered over and the next round will start again with the start wager.
 If the specified number of rounds have been played the bot will disconnect from the API and exit.
 
-Note that the bot is totally session-agnostic. The sessionstart and sessioneend-events are ignored as they do not have
-any influence on the betting strategy.
+*Notes:*
+- The bot is totally session-agnostic. The sessionstart and sessioneend-events are ignored as they do not have any
+influence on the betting strategy.
+- The bot does not contain any error-handling e.g. for rejected bets. You have to take care not to exceed or underrun
+bet limits.
