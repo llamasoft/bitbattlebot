@@ -3,7 +3,12 @@ bitbattlebot
 
 This is a sample implementation of a bot for the bitcoin gambling website [bitbattle.me](http://bitbattle.me/).
 
-See the [API description](http://bitbattle.me/api/) for details on the API.
+The communication with the server relies on [socket.io](http://socket.io/) technology. See the [API description](http://bitbattle.me/api/) for details on the API.
+
+Requirements
+------------
+- [socket.io client library](https://github.com/invisibleroads/socketIO-client)
+- Python 2.7+ (Not tested with 3.x)
 
 BaseBot
 -------
