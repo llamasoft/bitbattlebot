@@ -17,6 +17,9 @@ to get an understanding of the API events and json objects: Startup the bot and 
 bets on [bitbattle.me](http://bitbattle.me/).
 You only need to provide the uuid of the player you want to use to the bot.
 
+### Usage
+`> python basebot.py 82ac02f7dd4a420395367281ce074601`
+
 SimpleMartingaleBot
 -------------------
 This is an extension of the BaseBot which implements a very simple martingale betting strategy. You need to provide:
@@ -38,3 +41,8 @@ If the specified number of rounds have been played the bot will disconnect from 
 influence on the betting strategy.
 - The bot does not contain any error-handling e.g. for rejected bets. You have to take care not to exceed or underrun bet limits.
 - Don't forget to unlock your wallet before starting the bot.
+
+### Usage
+    > python basebot.py 82ac02f7dd4a420395367281ce074601 http://rpcuser:rpcpass@localhost:8332 15fJphb2USKDCZJexnKHpK4sUtQaTVNaif 0.001 0.1 12
+    
+This command will start a martingale session for player [Herbert](http://bitbattle.me/player/herbert/) with bet address 15fJphb2USKDCZJexnKHpK4sUtQaTVNaif (This is Herbert's 50% address). Each martingale round will start with 0.001 BTC wager and double it up to 0.1. The bot will play 12 rounds.
