@@ -43,6 +43,6 @@ influence on the betting strategy.
 - Don't forget to unlock your wallet before starting the bot.
 
 ### Usage
-    > python basebot.py 82ac02f7dd4a420395367281ce074601 http://rpcuser:rpcpass@localhost:8332 15fJphb2USKDCZJexnKHpK4sUtQaTVNaif 0.001 0.1 12
+    > python martingalebot.py 82ac02f7dd4a420395367281ce074601 http://rpcuser:rpcpass@localhost:8332 15fJphb2USKDCZJexnKHpK4sUtQaTVNaif 0.001 0.1 12
     
 This command will start a martingale session for player [Herbert](http://bitbattle.me/player/herbert/) with bet address 15fJphb2USKDCZJexnKHpK4sUtQaTVNaif (This is Herbert's 50% address). Each martingale round will start with 0.001 BTC wager and double it up to 0.1. The bot will play 12 rounds.
