@@ -126,5 +126,4 @@ if __name__=="__main__":
     parser.add_argument("--host", help="Host to connect to. Defaults to 'api.bitbattle.me'", default="api.bitbattle.me")
     parser.add_argument("--port", help="Port to connect to. Defaults to 80", type=int, default=80)
     args = parser.parse_args()
-    print(args)
     bot = SimpleMartingaleBot(args)
