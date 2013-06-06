@@ -12,6 +12,7 @@ class SimpleMartingaleBot(BaseBot):
         self.startamount = args.startamount
         self.lastamount = args.startamount
         self.limit = args.limitamount
+        self.betmul = args.betmul
         self.num_rounds = args.rounds
         self.current_round = 1
         self.sessionID = None
@@ -28,7 +29,7 @@ class SimpleMartingaleBot(BaseBot):
 
     # This is a very simply Martingale strategy:
     #  - If the last bet was won start a new round again with the start_amount.
-    #  - If the last bet was lost place another bet with double stake
+    #  - If the last bet was lost place another bet with betmul * stake
     #  - If the doubled stake is above the bet limit consider the round "lost" and start a new round by placing again
     #    a bet with start_amount
     #  - If no more bets shall be placed return False
@@ -43,12 +44,12 @@ class SimpleMartingaleBot(BaseBot):
                 print("Last round finished.")
                 return False
         else:
-            # double stake
-            newstake = self.lastamount * 2
+            # increase stake
+            newstake = self.lastamount * self.betmul
             if newstake <= self.limit:
                 self.place_bet(newstake)
             else:
-                print("Reached bet limit - Can't double stake! Closing this round...")
+                print("Reached bet limit - Can't raise stake! Closing this round...")
                 if self.current_round < self.num_rounds:
                     self.current_round += 1
                     print("Starting next round %d!" % (self.current_round))
@@ -122,6 +123,7 @@ if __name__=="__main__":
     parser.add_argument("betaddress", help="The bitcoin address to place bets on")
     parser.add_argument("startamount", help="Start amount to bet, e.g. '0.01'", type=Decimal)
     parser.add_argument("limitamount", help="Max. amount to bet, e.g. '1.0'", type=Decimal)
+    parser.add_argument("betmul", help="Amount to multiply bet by on a loss, e.g. '2.0'", type=Decimal)
     parser.add_argument("rounds", help="Number of rounds to play (A round ends either when a bet is won or the max. bet amount is reached).", type=int)
     parser.add_argument("--host", help="Host to connect to. Defaults to 'api.bitbattle.me'", default="api.bitbattle.me")
     parser.add_argument("--port", help="Port to connect to. Defaults to 80", type=int, default=80)
